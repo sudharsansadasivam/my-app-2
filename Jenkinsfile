@@ -29,7 +29,7 @@ node{
               }
              if (qg.status != 'FAILURE') {
 
-                    echo "Quality Gate  Failure!"
+                    echo "Quality Gate  Success!"
                     curl "https://api.GitHub.com/repos/sudharsansadasivam/my-app-2/statuses/$GIT_COMMIT?access_token=2a30d5e597a0b6a537c191a5aaf87673bf19cd11" \
                     -H "Content-Type: application/json" \
                     -X POST \
