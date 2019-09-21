@@ -27,6 +27,15 @@ node{
                     -d "{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-13-58-34-76.us-east-2.compute.amazonaws.com/job/Jenkins_c/$BUILD_NUMBER/console\"}"
 
               }
+             if (qg.status != 'FAILURE') {
+
+                    echo "Quality Gate  Failure!"
+                    curl "https://api.GitHub.com/repos/sudharsansadasivam/my-app-2/statuses/$GIT_COMMIT?access_token=2a30d5e597a0b6a537c191a5aaf87673bf19cd11" \
+                    -H "Content-Type: application/json" \
+                    -X POST \
+                    -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-13-58-34-76.us-east-2.compute.amazonaws.com/job/Jenkins_c/$BUILD_NUMBER/console\"}"
+
+              }
           }
       }    
    
