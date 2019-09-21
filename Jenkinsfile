@@ -22,7 +22,7 @@ node{
 
                     echo "Quality Gate  Failure!"
                  sh """
-                    curl "https://api.GitHub.com/repos/sudharsansadasivam/my-app-2/statuses/$env.GIT_COMMIT?access_token=2a30d5e597a0b6a537c191a5aaf87673bf19cd11" \
+                    curl "https://api.GitHub.com/repos/sudharsansadasivam/my-app-2/statuses/$env.GIT_COMMIT?access_token=067a3a4faffecb190b2b7b87764dc8c5b80ebb48" \
                     -H "Content-Type: application/json" \
                     -X POST \
                     -d "{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-13-58-34-76.us-east-2.compute.amazonaws.com/job/Jenkins_c/$env.BUILD_NUMBER/console\"}"
@@ -33,7 +33,7 @@ node{
 
                     echo "Quality Gate  Success!"
                     sh """
-                    curl "https://api.GitHub.com/repos/sudharsansadasivam/my-app-2/statuses/$env.GIT_COMMIT?access_token=2a30d5e597a0b6a537c191a5aaf87673bf19cd11" \
+                    curl "https://api.GitHub.com/repos/sudharsansadasivam/my-app-2/statuses/$env.GIT_COMMIT?access_token=067a3a4faffecb190b2b7b87764dc8c5b80ebb48" \
                     -H "Content-Type: application/json" \
                     -X POST \
                     -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-13-58-34-76.us-east-2.compute.amazonaws.com/job/Jenkins_c/$env.BUILD_NUMBER/console\"}"
