@@ -2,6 +2,7 @@ node{
    stage('SCM Checkout'){
      git 'https://github.com/sudharsansadasivam/my-app-2'
    }
+   /*
    stage('Compile-Package'){
       // Get maven home path
       def mvnHome =  tool name: 'maven-3', type: 'maven'   
@@ -49,6 +50,7 @@ node{
       Sudharsan''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'sudharsansadasivam@gmail.com'
    }
    */
+   /*
    stage('Slack Notification'){
        slackSend baseUrl: 'https://hooks.slack.com/services/',
        channel: '#jenkins-pipeline',
@@ -57,7 +59,8 @@ node{
        teamDomain: 'Devops',
        tokenCredentialId: 'slack-ID'
    }
-
+*/
 }
+
 
 
