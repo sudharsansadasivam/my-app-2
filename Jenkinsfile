@@ -3,11 +3,12 @@ node{
      git 'https://github.com/sudharsansadasivam/my-app-2'
    }
    stage('Compile-Package'){
+      echo "Compile Stage Passed"
       // Get maven home path
-      def mvnHome =  tool name: 'maven-3', type: 'maven'   
-      sh "${mvnHome}/bin/mvn package"
+      //def mvnHome =  tool name: 'maven-3', type: 'maven'   
+      //sh "${mvnHome}/bin/mvn package"
    }
-   
+   /*
    stage('SonarQube Analysis') {
         def mvnHome =  tool name: 'maven-3', type: 'maven'
         withSonarQubeEnv('sonar-6') { 
@@ -56,7 +57,7 @@ node{
        message: 'Welcome to Jenkins, Slack!', 
        teamDomain: 'Devops',
        tokenCredentialId: 'slack-ID'
-   }
+   }*/
 
 }
 
