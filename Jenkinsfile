@@ -50,6 +50,7 @@ node{
       Sudharsan''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'sudharsansadasivam@gmail.com'
    }
    */
+   /*
    stage('Slack Notification'){
        slackSend baseUrl: 'https://hooks.slack.com/services/',
        channel: '#jenkins-pipeline',
