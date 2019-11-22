@@ -2,12 +2,15 @@ node{
    stage('SCM Checkout'){
      git 'https://github.com/sudharsansadasivam/my-app-2'
    }
+   
    stage('Compile-Package'){
       // Get maven home path
-      def mvnHome =  tool name: 'maven-3', type: 'maven'   
-      sh "${mvnHome}/bin/mvn package"
+      //def mvnHome =  tool name: 'maven-3', type: 'maven'   
+     // sh "${mvnHome}/bin/mvn package"
+      echo "Compile Stage Passed"
    }
    
+   /*
    stage('SonarQube Analysis') {
         def mvnHome =  tool name: 'maven-3', type: 'maven'
         withSonarQubeEnv('sonar-6') { 
@@ -57,7 +60,7 @@ node{
        teamDomain: 'Devops',
        tokenCredentialId: 'slack-ID'
    }
-
+*/
 }
 
 
