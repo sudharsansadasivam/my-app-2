@@ -17,7 +17,7 @@ pipeline{
          script{
                  def mvnHome =  tool 'maven'
 	    
-         sh "${mvnHome}/bin/mvn package"
+         sh "${mvnHome} package"
 	 echo "Compile Stage Passed"
 	 }
    }
@@ -29,7 +29,7 @@ pipeline{
                 def mvnHome =  tool 'maven'
          
         withSonarQubeEnv('sonar-6') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
+          sh "${mvnHome} sonar:sonar"
 	}
         }
         }
