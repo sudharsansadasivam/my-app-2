@@ -1,8 +1,5 @@
 pipeline{
    agent any
-   tools{
-        maven 'Maven 3.6.3'
-    }
    stages{
    stage('SCM Checkout'){
       steps{
@@ -18,7 +15,7 @@ pipeline{
       		
       // Get maven home path
          script{
-                 def mvnHome =  tool name: 'maven', type: 'maven'
+                 def mvnHome =  tool 'maven'
 	            }
          sh "${mvnHome}/bin/mvn package"
 	 echo "Compile Stage Passed"
@@ -28,7 +25,7 @@ pipeline{
    stage('SonarQube Analysis') {
       steps{
          script{
-                def mvnHome =  tool name: 'maven', type: 'maven'
+                def mvnHome =  tool 'maven'
          }
         withSonarQubeEnv('sonar-6') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
