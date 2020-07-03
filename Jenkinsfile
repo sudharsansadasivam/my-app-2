@@ -12,14 +12,18 @@ pipeline{
       steps{
       echo "Compile Stage Passed"
       // Get maven home path
-      def mvnHome =  tool name: 'maven-3', type: 'maven'   
-      sh "${mvnHome}/bin/mvn package"
+         step{
+         def mvnHome =  tool name: 'maven-3', type: 'maven'   
+         }
+         sh "${mvnHome}/bin/mvn package"
    }
    }
    
    stage('SonarQube Analysis') {
       steps{
+         step{
         def mvnHome =  tool name: 'maven-3', type: 'maven'
+         }
         withSonarQubeEnv('sonar-6') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
         }
@@ -29,7 +33,10 @@ pipeline{
    stage("Quality Gate Status Check"){
       steps{
           timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
+             step{
+                def qg = waitForQualityGate()
+             }
+             step{
               if (qg.status != 'OK') {
                     echo "Quality Gate  Failure!"
                  sh """
@@ -40,6 +47,8 @@ pipeline{
                   """  
 
               }
+             }
+             step{
              if (qg.status != 'FAILURE') {
 
                     echo "Quality Gate  Success!"
@@ -49,6 +58,7 @@ pipeline{
                     -X POST \
                     -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-11-81-36.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
                      """
+             }
              } 
              }
           }
