@@ -2,16 +2,18 @@ pipeline{
    agent any
    stages{
    stage('SCM Checkout'){
+     echo "SCM Checkout Started"
      git 'https://github.com/sudharsansadasivam/my-app-2'
+     echo "SCM Checkout Completed"
    }
    stage('Compile-Package'){
       echo "Compile Stage Passed"
       // Get maven home path
-      //def mvnHome =  tool name: 'maven-3', type: 'maven'   
-      //sh "${mvnHome}/bin/mvn package"
+      def mvnHome =  tool name: 'maven-3', type: 'maven'   
+      sh "${mvnHome}/bin/mvn package"
    }
    }
-   /*
+   
    stage('SonarQube Analysis') {
         def mvnHome =  tool name: 'maven-3', type: 'maven'
         withSonarQubeEnv('sonar-6') { 
@@ -23,13 +25,12 @@ pipeline{
           timeout(time: 1, unit: 'HOURS') {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
-
                     echo "Quality Gate  Failure!"
                  sh """
                     curl "https://api.github.com/repos/sudharsansadasivam/my-app-2/statuses/env.GIT_COMMIT?access_token=fc12e2cffd299cd8aec3b09b6dd0d94d41e9be37" \
                     -H "Content-Type: application/json" \
                     -X POST \
-                    -d "{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-13-58-34-76.us-east-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
+                    -d "{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-11-81-36.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
                   """  
 
               }
@@ -40,7 +41,7 @@ pipeline{
                     curl "https://api.github.com/repos/sudharsansadasivam/my-app-2/statuses/env.GIT_COMMIT?access_token=fc12e2cffd299cd8aec3b09b6dd0d94d41e9be37" \
                     -H "Content-Type: application/json" \
                     -X POST \
-                    -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-13-58-34-76.us-east-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
+                    -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-11-81-36.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
                      """
               }
           }
@@ -63,6 +64,6 @@ pipeline{
        tokenCredentialId: 'slack-ID'
    }*/
 
-}
+}	
 
 
