@@ -12,12 +12,13 @@ pipeline{
    }
    stage('Compile-Package'){
       steps{
-      		echo "Compile Stage Passed"
+      		
       // Get maven home path
          script{
                  def mvnHome =  tool name: 'maven-3', type: 'maven'
 	            }
          sh "${mvnHome}/bin/mvn package"
+	 echo "Compile Stage Passed"
    }
    }
    
