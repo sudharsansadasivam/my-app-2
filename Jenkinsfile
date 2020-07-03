@@ -16,9 +16,10 @@ pipeline{
       // Get maven home path
          script{
                  def mvnHome =  tool 'maven'
-	            }
+	    
          sh "${mvnHome}/bin/mvn package"
 	 echo "Compile Stage Passed"
+	 }
    }
    }
    
@@ -26,9 +27,10 @@ pipeline{
       steps{
          script{
                 def mvnHome =  tool 'maven'
-         }
+         
         withSonarQubeEnv('sonar-6') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
+	}
         }
         }
     }
