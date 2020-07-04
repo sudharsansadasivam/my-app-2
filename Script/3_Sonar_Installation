@@ -1,0 +1,8 @@
+#Download and Install SonarQube on Ubuntu
+cd /tmp
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.9.1.zip
+sudo unzip sonarqube-7.9.1.zip -d /opt
+sudo mv /opt/sonarqube-7.9.1 /opt/sonarqube
+
+
+		

@@ -1,0 +1,20 @@
+sudo groupadd sonar
+sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar 
+sudo chown sonar:sonar /opt/sonarqube -R
+sudo vim /opt/sonarqube/conf/sonar.properties
+sonar.jdbc.username=sonar
+sonar.jdbc.password=postgres
+sudo vim  /opt/sonarqube/bin/linux-x86-64/sonar.sh
+RUN_AS_USER=sonar
+sudo su sonar
+cd /opt/sonar/bin/linux-x86-64/
+./sonar.sh start
+./sonar.sh status
+tail /opt/sonarqube/logs/sonar.log
+
+#Copy the Secret  Authentication Token From 
+Login 
+User Name - admin
+Password - admin 
+
+Administrtator == > My Account == Security ==> Token_ID
