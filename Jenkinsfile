@@ -16,7 +16,7 @@ pipeline{
       		
       // Get maven home path
          script{
-                 def mvnHome =  tool 'mymaven'
+                 def mvnHome =  tool 'maven'
 	    
          sh "${mvnHome} package"
 	 echo "Compile Stage Passed"
@@ -27,7 +27,7 @@ pipeline{
    stage('SonarQube Analysis') {
       steps{
          script{
-                def mvnHome =  tool 'mymaven'
+                def mvnHome =  tool 'maven'
          
         withSonarQubeEnv('sonar-6') { 
           sh "${mvnHome} sonar:sonar"
