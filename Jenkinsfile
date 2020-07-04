@@ -16,7 +16,7 @@ pipeline{
       		
       // Get maven home path
          script{
-		 sh "chmod 777 /var/lib/jenkins/workspace/Java_Code@tmp/*"
+		 sh "chmod 777 /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/*"
                  def mvnHome =  tool 'maven'
 	    
          sh "${mvnHome} package"
@@ -28,7 +28,7 @@ pipeline{
    stage('SonarQube Analysis') {
       steps{
          script{
-		sh "chmod 777 /var/lib/jenkins/workspace/Java_Code@tmp/*"
+		sh "chmod 777 /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/*"
                 def mvnHome =  tool 'maven'
          
         withSonarQubeEnv('sonar-6') { 
