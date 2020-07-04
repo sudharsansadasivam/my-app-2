@@ -2,6 +2,7 @@ pipeline{
    agent any
    stages{
    stage('SCM Checkout'){
+      
       steps{
             echo "SCM Checkout Started"
 	        script{
