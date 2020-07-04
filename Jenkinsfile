@@ -1,5 +1,8 @@
 pipeline{
    agent any
+   tools {
+        maven "3.6.3" // You need to add a maven with name "3.6.0" in the Global Tools Configuration page
+    }
    stages{
    stage('SCM Checkout'){
       
@@ -13,13 +16,10 @@ pipeline{
    }
    stage('Compile-Package'){
       steps{
-      		
-      // Get maven home path
          script{
-		 sh "chmod 777 /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/*"
-                 def mvnHome =  tool 'maven'
-	    
-         sh "${mvnHome} package"
+	 sh "mvn -version"
+         sh "mvn clean install"
+         sh "mvn package"
 	 echo "Compile Stage Passed"
 	 }
    }
@@ -28,11 +28,9 @@ pipeline{
    stage('SonarQube Analysis') {
       steps{
          script{
-		sh "chmod 777 /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/*"
-                def mvnHome =  tool 'maven'
          
         withSonarQubeEnv('sonar-6') { 
-          sh "${mvnHome} sonar:sonar"
+          sh "mvn sonar:sonar"
 	}
         }
         }
