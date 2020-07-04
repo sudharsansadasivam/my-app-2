@@ -47,7 +47,7 @@ pipeline{
                     curl "https://api.github.com/repos/sudharsansadasivam/my-app-2/statuses/env.GIT_COMMIT?access_token=fc12e2cffd299cd8aec3b09b6dd0d94d41e9be37" \
                     -H "Content-Type: application/json" \
                     -X POST \
-                    -d "{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-11-81-36.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
+                    -d "{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-10-173-226.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
                   """ 
               }
               
@@ -58,7 +58,7 @@ pipeline{
                     curl "https://api.github.com/repos/sudharsansadasivam/my-app-2/statuses/env.GIT_COMMIT?access_token=fc12e2cffd299cd8aec3b09b6dd0d94d41e9be37" \
                     -H "Content-Type: application/json" \
                     -X POST \
-                    -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-11-81-36.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
+                    -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"http://ec2-3-10-173-226.eu-west-2.compute.amazonaws.com/job/Jenkins_c/env.BUILD_NUMBER/console\"}"
                      """
              } 
              }
