@@ -18,9 +18,13 @@ Restart=always
 LimitNOFILE=65536
 LimitNPROC=4096
 
-
 [Install]
 WantedBy=multi-user.target
+
+
+
+## Sonar Service Start , Enable And Check Status 
+## Note :  cd /opt/sonarqube/bin/linux-x86-64/sonar.sh  if you check status it will be in running status
 
 sudo systemctl start sonar
 sudo systemctl enable sonar
